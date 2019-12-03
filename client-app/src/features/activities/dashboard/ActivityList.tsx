@@ -1,13 +1,18 @@
 import React from "react";
-import { Item, Image, Button, Label, Segment } from "semantic-ui-react";
+import { Item, Button, Label, Segment } from "semantic-ui-react";
 import { IActivity } from "../../../app/models/activity";
 
 interface Iprops {
   activities: IActivity[];
   selectActivity: (id: string) => void;
+  deleteActivity: (id: string) => void;
 }
 
-const ActivityList: React.FC<Iprops> = ({ activities, selectActivity }) => {
+const ActivityList: React.FC<Iprops> = ({
+  activities,
+  selectActivity,
+  deleteActivity
+}) => {
   return (
     <Segment clearing>
       <Item.Group divided>
@@ -28,6 +33,12 @@ const ActivityList: React.FC<Iprops> = ({ activities, selectActivity }) => {
                   floated="right"
                   content="View"
                   color="blue"
+                />
+                <Button
+                  onClick={() => deleteActivity(activity.id)}
+                  floated="right"
+                  content="Delete"
+                  color="red"
                 />
                 <Label basic content={activity.category} />
               </Item.Extra>
