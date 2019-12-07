@@ -35,9 +35,9 @@ namespace Application.Activities
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
-
+                string tester = Convert.ToString(request.Id);
                 if (activity == null)
-                    throw new Exception("Could not find activity");
+                    throw new Exception("could not find activity " + tester);
 
                 activity.Title = request.Title ?? activity.Title;
                 activity.Description = request.Description ?? activity.Description;
