@@ -75,7 +75,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    activityStore.loadActivites();
+    activityStore.loadActivities();
   }, [activityStore]);
 
   if (activityStore.loadingInitial)
