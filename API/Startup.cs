@@ -1,5 +1,6 @@
 ﻿using API.Middleware;
 using Application.Activities;
+using Domain;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Persistence;
 
 namespace API
@@ -40,7 +42,13 @@ namespace API
             {
                 cfg.RegisterValidatorsFromAssemblyContaining<Create>();
             });
+
+            var builder = services.AddIdentityCore<AppUser>();
+            var IdentityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            IdentityBuilder.AddEntityFrameworkStores<DataContext>();
+            IdentityBuilder.AddSignInManager<SignInManager<AppUser>>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
