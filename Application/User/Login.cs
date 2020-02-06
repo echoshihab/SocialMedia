@@ -54,7 +54,8 @@ namespace Application.User
                     // TODO: generate token
                     return user;
                 }
-                throw new RestException(HttpStatusCode.Unauthorized)};
+                throw new RestException(HttpStatusCode.Unauthorized);
+            }
         }
     }
 }
