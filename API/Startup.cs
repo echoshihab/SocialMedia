@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Persistence;
+using Application.Interfaces;
+using Infrastructure.Security;
 
 namespace API
 {
@@ -48,6 +50,7 @@ namespace API
             IdentityBuilder.AddEntityFrameworkStores<DataContext>();
             IdentityBuilder.AddSignInManager<SignInManager<AppUser>>();
 
+            services.AddScoped<IJwtGenerator, JwtGenerator>();
             services.AddAuthentication();
         }
 
