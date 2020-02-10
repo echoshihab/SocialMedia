@@ -49,7 +49,7 @@ namespace API
             });
 
             var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("super secret key")
+                Encoding.UTF8.GetBytes(Configuration["TokenKey"])
             );
             var builder = services.AddIdentityCore<AppUser>();
             var IdentityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
