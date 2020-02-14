@@ -64,7 +64,7 @@ namespace Application.User
                 };
 
                 //hhandler logic 
-                var result = await _userManager.CreateAsync(user, request.Password)
+                var result = await _userManager.CreateAsync(user, request.Password);
                 if (result.Succeeded)
                 {
                     return new User
