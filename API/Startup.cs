@@ -63,7 +63,7 @@ namespace API
             IdentityBuilder.AddEntityFrameworkStores<DataContext>();
             IdentityBuilder.AddSignInManager<SignInManager<AppUser>>();
 
-            services.AddScoped<IJwtGenerator, JwtGenerator>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(Opt =>
             {
                 Opt.TokenValidationParameters = new TokenValidationParameters
@@ -74,6 +74,9 @@ namespace API
                     ValidateIssuer = false
                 };
             });
+
+            services.AddScoped<IJwtGenerator, JwtGenerator>();
+            services.AddScoped<IUserAccessor, UserAccessor>();
         }
 
 
