@@ -71,7 +71,7 @@ const Activities = {
 const User = {
   current: (): Promise<IUser> => requests.get("/user"),
   login: (user: IUserFormValues): Promise<IUser> =>
-    requests.post(`/user/login1`, user),
+    requests.post(`/user/login`, user),
   register: (user: IUserFormValues): Promise<IUser> =>
     requests.post(`/user/register`, user)
 };
